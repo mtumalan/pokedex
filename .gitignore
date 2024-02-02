@@ -137,3 +137,10 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Added Node and NPM files to the .gitignore file #
+# Node #
+node_modules/
+npm-debug.log
+npm-debug.log.*
+package-lock.json
