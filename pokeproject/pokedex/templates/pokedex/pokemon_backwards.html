@@ -1,0 +1,63 @@
+{% extends 'pokedex/base.html' %}
+
+{% block content %}
+
+<!-- Main Div -->
+<div class="bg-orange-600 py-10 px-3 text-center items-center">
+    <h1 class="text-white mt-2 mb-16 text-4xl font-bold tracking-tight md:text-4xl xl:text-6xl">Name Backwards</h1>
+
+    <h4 class="text-white text-2xl font-bold tracking-tight md:text-2xl xl:text-3xl">This table shows all the pokemons with their names backwards</h4>
+
+    <!-- Table -->
+    <div class="relative overflow-x-auto mt-4" id="table">
+        <table class="w-full text-sm text-left rtl:text-right">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-300">
+                <tr>
+                    <th scope="col" class="px-6 py-4">ID</th>
+                    <th scope="col" class="px-6 py-4">Name</th>
+                    <th scope="col" class="px-6 py-4">Name Backwards</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pokemon in page_obj %} <!-- Is going to iterate through the page_obj list that contains pokemons-->
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap">{{ pokemon.id }}</th>
+                        <td class="px-6 py-3">{{ pokemon.name }}</td>
+                        <td class="px-6 py-3">{{ pokemon.backwards_name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>            
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center items-center h-full">
+        <ul class="list-style-none flex my-3">
+          {% if page_obj.has_previous %} <!-- If there is a previous page, activates the previous button -->
+          <li>
+            <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-white transition-all duration-300 hover:bg-neutral-200 hover:text-black" href="?page={{ page_obj.previous_page_number }}#table" aria-label="Previous">
+              <span aria-hidden="true">&laquo; Previous</span>
+            </a>
+          </li>
+          {% endif %}
+      
+          {% for num in page_obj.paginator.page_range %} <!-- Iterates through the page range, creating a button for each page -->
+          <li {% if page_obj.number == num %}class="bg-gray-400 text-white rounded"{% endif %}>
+            <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-white transition-all duration-300 hover:bg-neutral-200 hover:text-black" href="?page={{ num }}#table">
+              {{ num }}
+            </a>
+          </li>
+          {% endfor %}
+      
+          {% if page_obj.has_next %} <!-- If there is a next page, activates the next button -->
+          <li>
+            <a class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-white transition-all duration-300 hover:bg-neutral-200 hover:text-black" href="?page={{ page_obj.next_page_number }}#table" aria-label="Next">
+              <span aria-hidden="true">Next &raquo;</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+    </div>
+      
+</div>
+{% endblock %}

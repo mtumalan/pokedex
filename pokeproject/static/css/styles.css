@@ -1,0 +1,7 @@
+/* Adding Tailwind CSS to the project */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'flowbite';

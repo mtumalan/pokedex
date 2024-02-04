@@ -1,0 +1,42 @@
+{% extends 'pokedex/base.html' %}
+
+{% block content %}
+
+<!-- Main Div -->
+<div class="bg-green-600 py-10 px-3 text-center items-center">
+    <h1 class="text-white mt-2 mb-16 text-4xl font-bold tracking-tight md:text-4xl xl:text-6xl">Grass Types</h1>
+
+    <h4 class="text-white text-2xl font-bold tracking-tight md:text-2xl xl:text-3xl">This table shows all the pokemons that are grass types</h4>
+
+    <!-- Table -->
+    <div class="relative overflow-x-auto mt-4" id="table">
+        <table class="w-full text-sm text-left rtl:text-right">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-300">
+                <tr>
+                    <th scope="col" class="px-6 py-4">ID</th>
+                    <th scope="col" class="px-6 py-4">Name</th>
+                    <th scope="col" class="px-6 py-4">Type</th>
+                    <th scope="col" class="px-6 py-4">Height</th>
+                    <th scope="col" class="px-6 py-4">Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pokemon in pokemons %} <!-- Is going to iterate through the pokemons list -->
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap">{{ pokemon.id }}</th>
+                        <td class="px-6 py-3">{{ pokemon.name }}</td>
+                        <td class="px-6 py-3">
+                            {% for type in pokemon.types %} <!-- Is going to iterate through the pokemon types -->
+                                {{ type }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="px-6 py-3">{{ pokemon.height }}</td>
+                        <td class="px-6 py-3">{{ pokemon.weight }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>            
+        </table>
+    </div>
+      
+</div>
+{% endblock %}
