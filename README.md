@@ -7,7 +7,7 @@ This Django-based project provides an interface to interact with the PokeAPI, di
 ## Features
 
 - **List Display**: Showcases a paginated list of the first 50 Pokémon with detailed information.
-- **Weight Filter**: Filters Pokémon by a specified weight range (e.g., 30 to 80 units).
+- **Weight and Height Filter**: Filters Pokémon by a specified weight or height range (e.g., 30 to 80 units).
 - **Type Filter**: Displays Pokémon of specific types such as Grass or Flying.
 - **Reverse Names**: Offers a view that lists Pokémon with their names reversed.
 - **Concurrency**: Utilizes Python concurrency for efficient data retrieval from the PokeAPI.
