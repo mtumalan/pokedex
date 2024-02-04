@@ -4,6 +4,8 @@
 
 This Django-based project provides an interface to interact with the PokeAPI, displaying various details about Pokémon, including their names, types, heights, and weights. It features lists of Pokémon filtered by specific criteria, such as weight ranges or types, and includes functionality to display Pokémon names in reverse. The project also utilizes Tailwind CSS, that require Node.js packages managed through NPM.
 
+[Video demonstration](https://youtu.be/hBqttWWpJSE)
+
 ## Features
 
 - **List Display**: Showcases a paginated list of the first 50 Pokémon with detailed information.
